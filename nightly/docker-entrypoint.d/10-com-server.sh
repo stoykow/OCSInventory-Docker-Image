@@ -23,6 +23,7 @@ if [ ! -f ${SRV_CONF_FILE} ]; then
 	sed -i 's/"PATH_TO_LOG_DIRECTORY"/'"${OCS_LOG_DIR//\//\\/}"'/g' ${SRV_CONF_FILE}
 	sed -i 's/"PATH_TO_PLUGINS_PERL_DIRECTORY"/'"${OCS_PERLEXT_DIR//\//\\/}"'/g' ${SRV_CONF_FILE}
 	sed -i 's/"PATH_TO_PLUGINS_CONFIG_DIRECTORY"/'"${OCS_PLUGINSEXT_DIR//\//\\/}"'/g' ${SRV_CONF_FILE}
+	sed -i 's/OCS_DBI_PRINT_ERROR/'"$OCS_DBI_PRINT_ERROR"'/g' ${SRV_CONF_FILE}
 fi
 
 # Replace Variables
@@ -40,6 +41,9 @@ if [ -f ${SRV_CONF_FILE} ]; then
 		fi
 	done
 fi
+
+# Quick fix https://github.com/OCSInventory-NG/OCSInventory-Docker-Stack/issues/16
+sed -i 's/^.*PerlSetEnv OCS_OPT_DBI_PRINT_ERROR.*$/PerlSetEnv OCS_OPT_DBI_PRINT_ERROR 0/' ${SRV_CONF_FILE}
 
 # Permissions
 chown -R $APACHE_RUN_USER: $OCS_LOG_DIR
