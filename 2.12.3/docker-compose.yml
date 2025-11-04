@@ -43,7 +43,7 @@ services:
     expose :
       - "3306"
     volumes :
-      - ./sql/:/docker-entrypoint-initdb.d/
+      - /volume1/docker/ocsinventory/sql/:/docker-entrypoint-initdb.d/
       - sqldata:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD : rootpass
@@ -61,9 +61,9 @@ services:
       - 28890:80
       - 28891:443
     volumes:
-      - ./nginx/conf:/etc/nginx/templates
-      - ./nginx/certs:/etc/nginx/certs
-      - ./nginx/auth:/etc/nginx/auth
+      - /volume1/docker/ocsinventory/nginx/conf:/etc/nginx/templates
+      - /volume1/docker/ocsinventory/nginx/certs:/etc/nginx/certs
+      - /volume1/docker/ocsinventory/nginx/auth:/etc/nginx/auth
     environment:
       # 80 or 443
       LISTEN_PORT: 80
