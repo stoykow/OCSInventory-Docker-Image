@@ -5,6 +5,8 @@ services:
     image: ocsinventory/ocsinventory-docker-image:2.11
     container_name : ocsinventory-server
     restart: always
+    ports:
+      - 28894:80
     expose:
       - "80"
     volumes:
