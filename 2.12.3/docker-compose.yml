@@ -43,6 +43,8 @@ services:
     # image : mysql:8.0
     container_name : ocsinventory-db
     restart: always
+    ports:
+      - 23306:3306
     expose :
       - "3306"
     volumes :
