@@ -39,7 +39,8 @@ services:
       - ocsdb    
 
   ocsdb :
-    image : mysql:8.0
+    image: mariadb:10.11
+    # image : mysql:8.0
     container_name : ocsinventory-db
     restart: always
     expose :
