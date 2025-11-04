@@ -5,14 +5,16 @@ services:
     image: ocsinventory/ocsinventory-docker-image:2.12.3
     container_name : ocsinventory-server
     restart: always
+    ports:
+      - 28890:80
     expose:
       - "80"
     volumes:
-      - "perlcomdata:/etc/ocsinventory-server"
-      - "ocsreportsdata:/usr/share/ocsinventory-reports/ocsreports/extensions"
-      - "varlibdata:/var/lib/ocsinventory-reports"
-      - "httpdconfdata:/etc/apache2/conf-available"
-      - "profilesconfdata:/usr/share/ocsinventory-reports/ocsreports/config/profiles"
+      - /volume1/docker/ocsinventory/apache/perlcomdata:/etc/ocsinventory-server
+      - /volume1/docker/ocsinventory/apache/ocsreportsdata:/usr/share/ocsinventory-reports/ocsreports/extensions
+      - /volume1/docker/ocsinventory/apache/varlibdata:/var/lib/ocsinventory-reports
+      - /volume1/docker/ocsinventory/apache/httpdconfdata:/etc/apache2/conf-available
+      - /volume1/docker/ocsinventory/apache/profilesconfdata:/usr/share/ocsinventory-reports/ocsreports/config/profiles
     environment:
       OCS_DB_SERVER: ocsinventory-db
       OCS_DB_USER: ocsuser
@@ -43,8 +45,8 @@ services:
     expose :
       - "3306"
     volumes :
-      - /volume1/docker/ocsinventory/sql/:/docker-entrypoint-initdb.d/
-      - sqldata:/var/lib/mysql
+      - /volume1/docker/ocsinventory/sql:/docker-entrypoint-initdb.d/
+      - /volume1/docker/ocsinventory/sqldata:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD : rootpass
       MYSQL_USER : ocsuser
@@ -58,8 +60,8 @@ services:
     container_name: ocsinventory-proxy
     restart: always
     ports:
-      - 28890:80
-      - 28891:443
+      - 28891:80
+      - 28892:443
     volumes:
       - /volume1/docker/ocsinventory/nginx/conf:/etc/nginx/templates
       - /volume1/docker/ocsinventory/nginx/certs:/etc/nginx/certs
@@ -85,11 +87,3 @@ services:
   
 networks:
   localocs:
-
-volumes:
-  perlcomdata:
-  ocsreportsdata:
-  varlibdata:
-  httpdconfdata:
-  sqldata:
-  profilesconfdata:
