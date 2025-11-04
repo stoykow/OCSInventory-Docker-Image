@@ -58,8 +58,8 @@ services:
     container_name: ocsinventory-proxy
     restart: always
     ports:
-      - 80:80
-      - 443:443
+      - 28886:80
+      - 28887:443
     volumes:
       - ./nginx/conf:/etc/nginx/templates
       - ./nginx/certs:/etc/nginx/certs
