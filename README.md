@@ -113,7 +113,7 @@ If you encounter errors related to missing `install.php`, you can manually resto
 
 3. **Download the `install.php` file**:
    ```bash
-   wget https://raw.githubusercontent.com/OCSInventory-NG/OCSInventory-ocsreports/master/install.php
+   wget https://raw.githubusercontent.com/OCSInventory-NG/OCSInventory-ocsreports/2.12.3/install.php
    ```
 
 4. **Set appropriate permissions**:
