@@ -48,7 +48,7 @@ services:
     expose :
       - "3306"
     volumes :
-      - /volume1/docker/ocsinventory/sql/:/docker-entrypoint-initdb.d/
+      # - /volume1/docker/ocsinventory/sql/:/docker-entrypoint-initdb.d/
       - /volume1/docker/ocsinventory/sqldata:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD : rootpass
