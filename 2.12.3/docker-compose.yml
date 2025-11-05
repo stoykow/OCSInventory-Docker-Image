@@ -10,9 +10,9 @@ services:
     expose:
       - "80"
     volumes:
-      - /volume1/docker/ocsinventory/apache/perlcomdata:/etc/ocsinventory-server
+      #- /volume1/docker/ocsinventory/apache/perlcomdata:/etc/ocsinventory-server
       # - /volume1/docker/ocsinventory/apache/ocsreportsdata:/usr/share/ocsinventory-reports/ocsreports/extensions
-      - /volume1/docker/ocsinventory/apache/varlibdata:/var/lib/ocsinventory-reports
+      #- /volume1/docker/ocsinventory/apache/varlibdata:/var/lib/ocsinventory-reports
       # - /volume1/docker/ocsinventory/apache/httpdconfdata:/etc/apache2/conf-available
       # - /volume1/docker/ocsinventory/apache/profilesconfdata:/usr/share/ocsinventory-reports/ocsreports/config/profiles
     environment:
@@ -48,8 +48,8 @@ services:
     expose :
       - "3306"
     volumes :
-      - /volume1/docker/ocsinventory/sql:/docker-entrypoint-initdb.d
-      - /volume1/docker/ocsinventory/sqldata:/var/lib/mysql
+      #- /volume1/docker/ocsinventory/sql:/docker-entrypoint-initdb.d
+      #- /volume1/docker/ocsinventory/sqldata:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD : rootpass
       MYSQL_USER : ocsuser
