@@ -9,7 +9,7 @@ services:
       - 28890:80
     expose:
       - "80"
-    volumes:
+    #volumes:
       #- /volume1/docker/ocsinventory/apache/perlcomdata:/etc/ocsinventory-server
       # - /volume1/docker/ocsinventory/apache/ocsreportsdata:/usr/share/ocsinventory-reports/ocsreports/extensions
       #- /volume1/docker/ocsinventory/apache/varlibdata:/var/lib/ocsinventory-reports
@@ -47,7 +47,7 @@ services:
       - 23306:3306
     expose :
       - "3306"
-    volumes :
+    #volumes :
       #- /volume1/docker/ocsinventory/sql:/docker-entrypoint-initdb.d
       #- /volume1/docker/ocsinventory/sqldata:/var/lib/mysql
     environment:
